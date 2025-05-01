@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kiarra Oyao | Portfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #000;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: url('images/kiarrabg.jpg') center/cover no-repeat;
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      z-index: 2;
+      font-weight: bold;
+      font-size: 1rem;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    .portrait {
+      position: absolute;
+      left: 100px;
+      top: 100px;
+      height: 400px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      z-index: 2;
+    }
+
+    .nav {
+      position: absolute;
+      top: 80px;
+      right: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 25px;
+      z-index: 2;
+    }
+
+    .link-wrapper {
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-left: 10px;
+    }
+
+    .number {
+      font-size: 0.8rem;
+      color: #ccc;
+      margin-right: 10px;
+    }
+
+    .nav a, .nav button {
+      text-decoration: none;
+      color: white;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      z-index: 3;
+    }
+
+    .nav a:hover, .nav button:hover {
+      color: #ffdb58;
+      transform: scale(1.05);
+    }
+
+    .dropdown {
+      margin-left: 40px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+      z-index: 4;
+    }
+
+    .dropdown a {
+      font-size: 1.2rem;
+      color: #eee;
+      text-decoration: none;
+    }
+
+    .dropdown a:hover {
+      color: #ffdb58;
+    }
+
+    .show {
+      display: flex !important;
+    }
+
+    .dropdown-icon {
+      font-size: 1.5rem;
+      margin-left: 10px;
+      color: #ffdb58;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        height: auto;
+        min-height: 100vh;
+      }
+
+      .portrait {
+        position: static;
+        width: 80%;
+        height: auto;
+        margin: 80px auto 30px auto;
+        display: block;
+      }
+
+      .nav {
+        position: static;
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .nav a, .nav button {
+        font-size: 1.2rem;
+      }
+
+      .dropdown {
+        margin-left: 0;
+        align-items: center;
+      }
+
+      .logo {
+        position: static;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="overlay"></div>
+    <div class="logo">KIARRA OYAO</div>
+    <img src="images/kiarraf.jpg" alt="Kiarra Front" class="portrait" />
+
+    <div class="nav">
+      <div class="link-wrapper"><span class="number">01</span><a href="index.html"><button>Home</button></a></div>
+
+      <div class="link-wrapper">
+        <span class="number">02</span>
+        <button onclick="toggleAboutMeDropdown()">About Me <span class="dropdown-icon">▼</span></button>
+      </div>
+      <div class="dropdown" id="aboutMeDropdown">
+        <a href="about.html">About Me</a>
+        <a href="hobbies.html">Hobbies</a>
+      </div>
+
+      <div class="link-wrapper">
+        <span class="number">03</span>
+        <button onclick="toggleGalleryDropdown()">Gallery <span class="dropdown-icon">▼</span></button>
+      </div>
+      <div class="dropdown" id="galleryDropdown">
+        <a href="gallery.html">Photos of mine</a>
+        <a href="dumps.html">Dumps</a>
+      </div>
+
+      <div class="link-wrapper">
+        <span class="number">04</span>
+        <button onclick="toggleProjectDropdown()">Projects <span class="dropdown-icon">▼</span></button>
+      </div>
+      <div class="dropdown" id="projectDropdown">
+        <a href="project1.html">Project I</a>
+        <a href="project2.html">Project II</a>
+        <a href="index.html">Project III</a>
+      </div>
+
+      <div class="link-wrapper">
+        <span class="number">05</span>
+        <button onclick="toggleContactDropdown()">Contacts <span class="dropdown-icon">▼</span></button>
+      </div>
+      <div class="dropdown" id="contactDropdown">
+        <a href="contact.html">Contact Me</a>
+        <a href="socials.html">Socials</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleAboutMeDropdown() {
+      document.getElementById("aboutMeDropdown").classList.toggle("show");
+    }
+
+    function toggleProjectDropdown() {
+      document.getElementById("projectDropdown").classList.toggle("show");
+    }
+
+    function toggleContactDropdown() {
+      document.getElementById("contactDropdown").classList.toggle("show");
+    }
+
+    function toggleGalleryDropdown() {
+      document.getElementById("galleryDropdown").classList.toggle("show");
+    }
+  </script>
+
+<script>
+
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	
+</script>
+</body>
+</html>

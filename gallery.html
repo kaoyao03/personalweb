@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery | Kiarra Oyao</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .image-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      height: 250px; 
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%; 
+      object-fit: cover; 
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .image-wrapper img:hover {
+      transform: scale(1.05);
+    }
+
+    .header {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 2.5rem;
+      color: #ffdb58;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .return-btn {
+      padding: 10px 20px;
+      background-color: #ffdb58;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .return-btn:hover {
+      background-color: #f1c40f;
+    }
+
+    
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      color: #ffdb58;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">Photos of mine</div>
+
+  <div class="container">
+    <div class="image-wrapper" onclick="openModal('images/f1g.jpg')">
+      <img src="images/f1g.jpg" alt="Image 1" />
+    </div>
+    <div class="image-wrapper" onclick="openModal('images/f2g.jpg')">
+      <img src="images/f2g.jpg" alt="Image 2" />
+    </div>
+    <div class="image-wrapper" onclick="openModal('images/f3g.jpg')">
+      <img src="images/f3g.jpg" alt="Image 3" />
+    </div>
+    <div class="image-wrapper" onclick="openModal('images/f4g.jpg')">
+      <img src="images/f4g.jpg" alt="Image 4" />
+    </div>
+    <div class="image-wrapper" onclick="openModal('images/f5g.jpg')">
+      <img src="images/f5g.jpg" alt="Image 5" />
+    </div>
+    <div class="image-wrapper" onclick="openModal('images/f6g.jpg')">
+      <img src="images/f6g.jpg" alt="Image 6" />
+    </div>
+  </div>
+
+  <div id="imageModal" class="modal">
+    <button class="close-btn" onclick="closeModal()">×</button>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="Selected Image" />
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="index.html">
+      <button class="return-btn">Return to Home</button>
+    </a>
+  </div>
+
+  <script>
+    function openModal(imageSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      modal.style.display = 'flex';
+      modalImage.src = imageSrc;
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
